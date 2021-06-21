@@ -26,10 +26,10 @@ let appleY = 5;
 
 //score
 let score = 0;
+let speed=7;
 
 let gameOver = false;
 
-let speed=7;
 
 function drawScore()
 {
@@ -161,24 +161,44 @@ function keyDown(event){
 //setInterval
 //setTimeout
 
-function main()
+function gameStart()
 {   
     //Gameover
     if (gameOver){
         ctx.fillStyle = "white";
         ctx.font = "50px Verdana";
         ctx.fillText("Game Over",canvas.width/6.5,canvas.tile/2);
-        alert("Game Over")
-        location.reload();
+        alert("Game Over \nScore: "+score);
+        location.reload(); //refresh page
     }
     clearScreen();
     changeSnakePosition();
     drawScore();  
     drawApple();
     drawSnake();
-    setTimeout(main, 1000/speed);
+    setTimeout(gameStart, 1000/speed);
     
 }
 
-document.body.addEventListener('keydown',keyDown)
-main();
+//main function
+function reply_click(clicked_id)
+{
+      if (clicked_id =='easy')
+      {
+        speed=5;
+        document.body.addEventListener('keydown',keyDown)
+        gameStart();
+      }
+      else if (clicked_id =='ave')
+      {
+        speed=7;
+        document.body.addEventListener('keydown',keyDown)
+        gameStart();
+      }
+      else if (clicked_id =='hard')
+      {
+        speed=9;
+        document.body.addEventListener('keydown',keyDown)
+        gameStart();
+      }
+}
