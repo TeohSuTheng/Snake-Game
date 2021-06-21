@@ -100,6 +100,7 @@ function checkAppleCollision()
     }
 }
 
+//change snake positions & detect collision
 function changeSnakePosition()
 {
     headX = headX + xVelocity;
@@ -112,10 +113,9 @@ function changeSnakePosition()
     checkWallCollision();
     if (gameOver == false)
     {
-    checkBodyCollision();
+        checkBodyCollision();
     } 
 }
-
 
 function clearScreen()
 {
@@ -123,9 +123,9 @@ function clearScreen()
     ctx.fillRect(0,0,canvas.width, canvas.height);
 }
 
+//detect keyboard input (Up,down,left,right)
 function keyDown(event){
     //topleft (0,0): right, down -- increase
-
     //up
     if(event.keyCode == 38){
         if(yVelocity != 1){
@@ -160,10 +160,9 @@ function keyDown(event){
 //requestAnimationFrame
 //setInterval
 //setTimeout
-
 function gameStart()
 {   
-    //Gameover
+    //check if Gameover
     if (gameOver){
         ctx.fillStyle = "white";
         ctx.font = "50px Verdana";
